@@ -45,6 +45,9 @@ g y = x where x = 6
 h :: Int -> Int
 h x = x where x = 3
 
+factorial :: Int -> Int
+factorial 1 = 1 
+factorial n = n * factorial (n - 1)
 
 main :: IO ()
 main = do
@@ -55,5 +58,6 @@ main = do
     print (area (Circle 10))
     print (list)
     print (take 10 primes)
+    print (factorial (3))
 
 
