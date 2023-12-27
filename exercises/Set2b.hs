@@ -4,6 +4,7 @@ import Mooc.Todo
 
 -- Some imports you'll need. Don't add other imports :)
 import Data.List
+import System.Win32 (COORD(yPos), xBUTTON1)
 
 ------------------------------------------------------------------------------
 -- Ex 1: compute binomial coefficients using recursion. Binomial
@@ -16,7 +17,9 @@ import Data.List
 -- Hint! pattern matching is your friend.
 
 binomial :: Integer -> Integer -> Integer
-binomial = todo
+binomial x 0 = 1
+binomial 0 y = 0
+binomial x y = binomial (x - 1) y + binomial (x - 1) (y - 1) 
 
 ------------------------------------------------------------------------------
 -- Ex 2: implement the odd factorial function. Odd factorial is like
@@ -27,7 +30,8 @@ binomial = todo
 --   oddFactorial 6 ==> 5*3*1 ==> 15
 
 oddFactorial :: Integer -> Integer
-oddFactorial = todo
+oddFactorial 1 = 1
+oddFactorial x = if even x then oddFactorial (x - 1) else x * oddFactorial (x - 1)
 
 ------------------------------------------------------------------------------
 -- Ex 3: implement the Euclidean Algorithm for finding the greatest
@@ -59,7 +63,9 @@ oddFactorial = todo
 -- * https://en.wikipedia.org/wiki/Euclidean_algorithm
 
 myGcd :: Integer -> Integer -> Integer
-myGcd = todo
+myGcd 0 y = y
+myGcd x 0 = x
+myGcd x y = if x > y then myGcd (x - y) y else myGcd (y - x) x 
 
 ------------------------------------------------------------------------------
 -- Ex 4: Implement the function leftpad which adds space characters
@@ -75,7 +81,7 @@ myGcd = todo
 -- * you can compute the length of a string with the length function
 
 leftpad :: String -> Int -> String
-leftpad = todo
+leftpad x y = if length x < y then leftpad (' ' : x) y else x
 
 ------------------------------------------------------------------------------
 -- Ex 5: let's make a countdown for a rocket! Given a number, you
@@ -91,7 +97,10 @@ leftpad = todo
 -- * you'll probably need a recursive helper function
 
 countdown :: Integer -> String
-countdown = todo
+countdown x = countdownConvert x "Ready! "
+
+countdownConvert :: Integer -> String -> String
+countdownConvert x y = if x > 0 then countdownConvert (x - 1) (y ++ show x ++ "... ") else y ++ "Liftoff!"
 
 ------------------------------------------------------------------------------
 -- Ex 6: implement the function smallestDivisor that returns the
@@ -108,8 +117,11 @@ countdown = todo
 --
 -- Hint: remember the mod function!
 
+smallNumber :: Integer -> Integer -> Integer
+smallNumber i j = if j `mod` i == 0 then i else smallNumber (i + 1) j
+
 smallestDivisor :: Integer -> Integer
-smallestDivisor = todo
+smallestDivisor k = if even k then 2 else smallNumber 3 k
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a function isPrime that checks if the given number
@@ -118,7 +130,7 @@ smallestDivisor = todo
 -- Ps. 0 and 1 are not prime numbers
 
 isPrime :: Integer -> Bool
-isPrime = todo
+isPrime x = not (x == 0 || x == 1) && (smallestDivisor x == x) 
 
 ------------------------------------------------------------------------------
 -- Ex 8: implement a function biggestPrimeAtMost that returns the
@@ -133,4 +145,6 @@ isPrime = todo
 --   biggestPrimeAtMost 10 ==> 7
 
 biggestPrimeAtMost :: Integer -> Integer
-biggestPrimeAtMost = todo
+biggestPrimeAtMost 0 = 0
+biggestPrimeAtMost 1 = 1 
+biggestPrimeAtMost i = if isPrime i then i else biggestPrimeAtMost (i - 1)
