@@ -4,7 +4,6 @@ import Mooc.Todo
 
 -- Some imports you'll need. Don't add other imports :)
 import Data.List
-import System.Win32 (COORD(yPos), xBUTTON1)
 
 ------------------------------------------------------------------------------
 -- Ex 1: compute binomial coefficients using recursion. Binomial
