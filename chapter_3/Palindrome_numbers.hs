@@ -1,4 +1,3 @@
--- Some imports you'll need. Don't add other imports :)
 import Data.List ( tails, words )
 
 -- a predicate that checks if a string is a palindrome
