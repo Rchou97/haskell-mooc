@@ -10,8 +10,5 @@
 -- Lets rewrite by getting rid of the helper function substringsOfLength and move all 
 -- the code to whatFollows: 
 
-whatFollows :: a1 -> Int -> a2 -> [[a1]]
-
-main :: io()
-main = 
-    do whatFollows c let k = map tail . filter ((== [c]) . take 1) . map (take (k + 1)) . tail
+-- whatFollows :: a1 -> Int -> a2 -> [[a1]]
+-- whatFollows c let k = map tail . filter ((== [c]) . take 1) . map (take (k + 1)) . tail
