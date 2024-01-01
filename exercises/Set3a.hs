@@ -12,8 +12,6 @@ import Mooc.Todo
 import Data.Char
 import Data.Either
 import Data.List
-import Distribution.Simple.Program.HcPkg (list)
-import System.Win32 (xBUTTON1)
 
 ------------------------------------------------------------------------------
 -- Ex 1: implement the function maxBy that takes as argument a
