@@ -11,4 +11,7 @@
 -- the code to whatFollows: 
 
 whatFollows :: a1 -> Int -> a2 -> [[a1]]
-whatFollows c k = map tail . filter ((== [c]) . take 1) . map (take (k + 1)) . tail
+
+main :: io()
+main = 
+    do whatFollows c let k = map tail . filter ((== [c]) . take 1) . map (take (k + 1)) . tail
