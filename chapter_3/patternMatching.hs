@@ -29,8 +29,15 @@ describeList (x:y:[]) = "a list with two elements" -- same as describeList [x,y]
 describeList (x:y:z:xs) = "a list with at least three elements"
 
 {- List patterns that end with :[] can be typed out as list literals. That is, just like [1,2,3] is
-the same value as 1:2:3:[], the pattern [x,y] is the same as the pattern x:y:[], 
+the same value as 1:2:3:[], the pattern [x,y] is the same as the pattern x:y:[] 
+
+Another way we can nest patterns is pattern matching on the head while pattern matching on a list.
+For example, this function checks if a list starts with 0: 
 -}
+startsWithZero :: [Integer] -> Bool
+startsWithZero (0:xs) = True
+startsWithZero (x:xs) = False
+startsWithZero [] = False
 
 main :: IO ()
 main = do 
